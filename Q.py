@@ -4,8 +4,10 @@ from os import system
 
 init(convert=True)
 
-time_memo = 5 # memorization time
+time_memo = 7 # memorization time
 nmbw = 7 # number of words to memorize
+nmlttrs = 4 # minimum number of letter per word
+
 
 # open file to list
 with open('s.txt') as fd:
@@ -34,7 +36,7 @@ def slprint(w, t):
 # clean the list, select only words greater than 4 characters
 lis2 = []
 for i in ss:
-	if len(i) > 4:
+	if len(i) > nmlttrs:
 		lis2.append(i)
 
 # function to take random words
@@ -73,8 +75,33 @@ while True:
 	slprint ("\n\n\tWHAT IS WORD ", .2)
 	print(Fore.RED + "#" + str(qnn+1) + Fore.GREEN + '?')
 
-	print ('\n\t>>> ', end='')
+
+	# remove for higher difficulty
+
+	sexxxx = wordlst
+	for i in range(random.randint(50, 1000)):
+		random.shuffle(sexxxx)
+		random.shuffle(sexxxx)
+		random.shuffle(sexxxx)
+		random.shuffle(sexxxx)
+		random.shuffle(sexxxx)
+		random.shuffle(sexxxx)
+		random.shuffle(sexxxx)
+	print('\n')
+	for sfd in sexxxx:
+			slprint('[*]', .12)
+			print(randc(), end='',)
+			slprint('\t\t' + str(sfd), .12)
+			print(Fore.GREEN)
+
+
+	# stop remove
+
+	print(randc(), end='')
+	print ('\n\n\t>>> ', end='')
+	print(randc(), end='')
 	a = input()
+	print(Fore.GREEN)
 
 
 	if (str(a.upper() + '\n') == str(q.upper())):
