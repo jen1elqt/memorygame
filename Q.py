@@ -42,7 +42,7 @@ def solvm_add_sub(): #additional difficulty
 		ssd = input(' ')
 		if int(ssd) != ad3:
 			print(Fore.RED + '\t\t\tWRONG!' + Fore.MAGENTA)
-			slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad3))
+			slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad3), .3)
 			print(Fore.GREEN)
 		else:
 			print(Fore.BLUE + '\t\tCORRECT!' + Fore.GREEN)
@@ -58,7 +58,7 @@ def solvm_add_sub(): #additional difficulty
 		ssdd = input(' ')
 		if int(ssdd) != ad33:
 			print(Fore.RED + '\t\t\tWRONG!' + Fore.MAGENTA)
-			slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad33))
+			slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad33), .3)
 			print(Fore.GREEN)
 		else:
 			print(Fore.BLUE + '\t\tCORRECT!' + Fore.GREEN)
