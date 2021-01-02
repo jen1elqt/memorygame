@@ -5,9 +5,8 @@ from os import system
 init(convert=True)
 
 time_memo = 7 # memorization time
-nmbw = 7 # number of words to memorize
-nmlttrs = 4 # minimum number of letter per word
-
+time_pass = 5 # time gap 
+nmbw = 4 # number of words to memorize
 
 # open file to list
 with open('s.txt') as fd:
@@ -31,12 +30,46 @@ def slprint(w, t):
         sys.stdout.flush() # defeat buffering
         time.sleep(random.random() * float(t))
 
+def solvm_add_sub(): #additional difficulty
+	sew = random.randint(0, 1)
+	print('\n\n')
+	if sew == 0:
+		ad1 = random.randint(1, 1000)
+		ad2 = random.randint(1, 1000)
+
+		print('\t\t' + str(ad1) + ' + ' + str(ad2) + ' = ', end='') 
+		ad3 = ad1 + ad2
+		ssd = input(' ')
+		if int(ssd) != ad3:
+			print(Fore.RED + '\t\t\tWRONG!' + Fore.MAGENTA)
+			slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad3))
+			print(Fore.GREEN)
+		else:
+			print(Fore.BLUE + '\t\tCORRECT!' + Fore.GREEN)
+	if sew == 1:
+		asx = random.randint(1, 1000)
+		asy = random.randint(1, 1000)
+		if (asx < asy):
+			asw2 = asx 
+			asx = asy 
+			asy = asw2
+		ad33 = asx - asy
+		print('\t\t' + str(asx) + ' - ' + str(asy) + ' = ', end='')
+		ssdd = input(' ')
+		if int(ssdd) != ad33:
+			print(Fore.RED + '\t\t\tWRONG!' + Fore.MAGENTA)
+			slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad33))
+			print(Fore.GREEN)
+		else:
+			print(Fore.BLUE + '\t\tCORRECT!' + Fore.GREEN)
+
+
 
 
 # clean the list, select only words greater than 4 characters
 lis2 = []
 for i in ss:
-	if len(i) > nmlttrs:
+	if len(i) > 4:
 		lis2.append(i)
 
 # function to take random words
@@ -68,6 +101,16 @@ while True:
 	time.sleep(time_memo)
 
 	bura()
+	# activate for additional difficulty
+	for ias in range(2):
+		solvm_add_sub() 
+	# change range how many times to solve
+
+
+
+	time.sleep(time_pass) # time gap
+	bura()
+
 
 	qnn = random.randint(0, (len(wordlst)-1))
 	q = wordlst[qnn]
@@ -75,33 +118,8 @@ while True:
 	slprint ("\n\n\tWHAT IS WORD ", .2)
 	print(Fore.RED + "#" + str(qnn+1) + Fore.GREEN + '?')
 
-
-	# remove for higher difficulty
-
-	sexxxx = wordlst
-	for i in range(random.randint(50, 1000)):
-		random.shuffle(sexxxx)
-		random.shuffle(sexxxx)
-		random.shuffle(sexxxx)
-		random.shuffle(sexxxx)
-		random.shuffle(sexxxx)
-		random.shuffle(sexxxx)
-		random.shuffle(sexxxx)
-	print('\n')
-	for sfd in sexxxx:
-			slprint('[*]', .12)
-			print(randc(), end='',)
-			slprint('\t\t' + str(sfd), .12)
-			print(Fore.GREEN)
-
-
-	# stop remove
-
-	print(randc(), end='')
-	print ('\n\n\t>>> ', end='')
-	print(randc(), end='')
+	print ('\n\t>>> ', end='')
 	a = input()
-	print(Fore.GREEN)
 
 
 	if (str(a.upper() + '\n') == str(q.upper())):
