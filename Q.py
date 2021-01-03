@@ -7,6 +7,7 @@ init(convert=True)
 time_memo = 7 # memorization time
 time_pass = 5 # time gap 
 nmbw = 4 # number of words to memorize
+nmbslv = 3 # number of items to solve correctly
 
 # open file to list
 with open('s.txt') as fd:
@@ -30,40 +31,47 @@ def slprint(w, t):
         sys.stdout.flush() # defeat buffering
         time.sleep(random.random() * float(t))
 
-def solvm_add_sub(): #additional difficulty
-	sew = random.randint(0, 1)
-	print('\n\n')
-	if sew == 0:
-		ad1 = random.randint(1, 1000)
-		ad2 = random.randint(1, 1000)
 
-		print('\t\t' + str(ad1) + ' + ' + str(ad2) + ' = ', end='') 
-		ad3 = ad1 + ad2
-		ssd = input(' ')
-		if int(ssd) != ad3:
-			print(Fore.RED + '\t\t\tWRONG!' + Fore.MAGENTA)
-			slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad3), .3)
-			print(Fore.GREEN)
-		else:
-			print(Fore.BLUE + '\t\tCORRECT!' + Fore.GREEN)
-	if sew == 1:
-		asx = random.randint(1, 1000)
-		asy = random.randint(1, 1000)
-		if (asx < asy):
-			asw2 = asx 
-			asx = asy 
-			asy = asw2
-		ad33 = asx - asy
-		print('\t\t' + str(asx) + ' - ' + str(asy) + ' = ', end='')
-		ssdd = input(' ')
-		if int(ssdd) != ad33:
-			print(Fore.RED + '\t\t\tWRONG!' + Fore.MAGENTA)
-			slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad33), .3)
-			print(Fore.GREEN)
-		else:
-			print(Fore.BLUE + '\t\tCORRECT!' + Fore.GREEN)
+def solvm_add_sub(solveam): #additional difficulty
+	f = 0
+	slprint ('\n\nYOU NEED ', .2)
+	print (Fore.RED + str(solveam) + Fore.GREEN, end='')
+	slprint(' CORRECT ANSWERS TO CONTINUE.\n\n', .2)
 
+	while f != solveam:
+		sew = random.randint(0, 1)
+		print('\n\n')
+		if sew == 0:
+			ad1 = random.randint(1, 100)
+			ad2 = random.randint(1, 100)
 
+			print('\t\t' + str(ad1) + ' + ' + str(ad2) + ' = ', end='') 
+			ad3 = ad1 + ad2
+			ssd = input(' ')
+			if int(ssd) != ad3:
+				print(Fore.RED + '\t\t\tWRONG!' + Fore.MAGENTA)
+				slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad3), .3)
+				print(Fore.GREEN)
+			else:
+				print(Fore.BLUE + '\t\tCORRECT!' + Fore.GREEN)
+				f = f + 1
+		if sew == 1:
+			asx = random.randint(1, 100)
+			asy = random.randint(1, 100)
+			if (asx < asy):
+				asw2 = asx 
+				asx = asy 
+				asy = asw2
+			ad33 = asx - asy
+			print('\t\t' + str(asx) + ' - ' + str(asy) + ' = ', end='')
+			ssdd = input(' ')
+			if int(ssdd) != ad33:
+				print(Fore.RED + '\t\t\tWRONG!' + Fore.MAGENTA)
+				slprint('\t\t\tCORRECT ANSWER IS: ' + str(ad33), .3)
+				print(Fore.GREEN)
+			else:
+				print(Fore.BLUE + '\t\tCORRECT!' + Fore.GREEN)
+				f = f + 1
 
 
 # clean the list, select only words greater than 4 characters
@@ -102,8 +110,8 @@ while True:
 
 	bura()
 	# activate for additional difficulty
-	for ias in range(2):
-		solvm_add_sub() 
+
+	solvm_add_sub(nmbslv)
 	# change range how many times to solve
 
 
