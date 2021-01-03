@@ -93,9 +93,17 @@ slprint('\n\tYOU SHALL HAVE ', .2)
 print(Fore.RED + str(time_memo) + Fore.GREEN, end='')
 slprint(' SECONDS TO MEMORIZE THEM.', .23)
 '''
+
+
+score = 0
+count = 0
 while True:
-	print('\n\n\n')
-	slprint('\tTHE WORDS ARE: \n\n\n', .24)
+	print(  Fore.MAGENTA)
+	slprint('\n\n\t\t\t\tSCORE: ', .1)
+	print(randc() + str(score) + randc() + ' / ' + randc() + str(count))
+	print(Fore.GREEN, end='')
+	slprint('\n\n\tTHE WORDS ARE: \n\n\n', .24)
+	print(Fore.YELLOW)
 
 	wordlst = taknmbw(nmbw)
 	dcnt = 1
@@ -122,16 +130,18 @@ while True:
 
 	qnn = random.randint(0, (len(wordlst)-1))
 	q = wordlst[qnn]
-
+	print(randc(), end='')
 	slprint ("\n\n\tWHAT IS WORD ", .2)
 	print(Fore.RED + "#" + str(qnn+1) + Fore.GREEN + '?')
 
-	print ('\n\t>>> ', end='')
+	print ('\n\t>>> ' + randc(), end='')
 	a = input()
 
 
 	if (str(a.upper() + '\n') == str(q.upper())):
+		print(Fore.BLUE, end='')
 		slprint('\n\tCORRECT!', .2)
+		score = score + 1
 
 	else:
 
@@ -145,6 +155,7 @@ while True:
 	print(Fore.GREEN)
 	time.sleep(1.4)
 	bura()
+	count = count + 1
 
 
 
